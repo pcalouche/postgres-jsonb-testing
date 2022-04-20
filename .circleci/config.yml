@@ -1,0 +1,8 @@
+version: 2.1
+machine: true
+jobs:
+  build:
+    steps:
+    - checkout
+    
+    - run: mvn -B clean install
