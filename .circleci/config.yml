@@ -7,4 +7,4 @@ jobs:
     steps:
     - checkout
     
-    - run: ./mvnw -B clean verify
+    - run: mvn -B clean verify
