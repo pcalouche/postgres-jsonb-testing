@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestcontainersApplication {
+public class JsonBTestingApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TestcontainersApplication.class, args);
+        SpringApplication.run(JsonBTestingApplication.class, args);
     }
 }

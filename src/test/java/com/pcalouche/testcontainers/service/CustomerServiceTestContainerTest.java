@@ -3,7 +3,6 @@ package com.pcalouche.testcontainers.service;
 import com.pcalouche.testcontainers.dto.CustomerDetails;
 import com.pcalouche.testcontainers.entity.Customer;
 import com.pcalouche.testcontainers.repository.CustomerRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,8 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @Testcontainers
@@ -47,7 +48,7 @@ public class CustomerServiceTestContainerTest {
     @Test
     public void testFindAll() {
         // 3 are loaded in from Liquibase
-        Assertions.assertThat(customerService.findAll()).hasSize(3);
+        assertThat(customerService.findAll()).hasSize(3);
 
         Customer customer = Customer.builder()
                 .name("Phil Calouche")
@@ -55,6 +56,6 @@ public class CustomerServiceTestContainerTest {
                 .build();
         customerRepository.save(customer);
 
-        Assertions.assertThat(customerService.findAll()).hasSize(4);
+        assertThat(customerService.findAll()).hasSize(4);
     }
 }

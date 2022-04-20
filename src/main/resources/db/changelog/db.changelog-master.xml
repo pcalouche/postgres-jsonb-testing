@@ -25,20 +25,12 @@
             </column>
             <column name="customer_details" type="jsonb"/>
         </createTable>
-        <createTable tableName="orders">
-            <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="item" type="varchar">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
     </changeSet>
 
     <changeSet id="2" author="psc">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="customers"/>
+                <tableExists tableName="orders"/>
             </not>
         </preConditions>
         <createTable tableName="orders">
