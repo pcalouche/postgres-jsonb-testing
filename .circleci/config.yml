@@ -7,4 +7,4 @@ jobs:
     steps:
     - checkout
     
-    - run: mvn -B clean install
+    - run: mvn clean verify
