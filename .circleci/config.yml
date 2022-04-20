@@ -1,7 +1,9 @@
 version: 2.1
-machine: true
 jobs:
   build:
+    machine:
+      image: ubuntu-2004:current
+    resource_class: small
     steps:
     - checkout
     
