@@ -47,14 +47,14 @@ public class CustomerServiceTestContainer2Test {
 
     @Test
     public void testUpdate() {
-        Customer customer = customerRepository.findAll().get(0);
+        Customer customer = customerService.findAll().get(0);
 
         String newName = "New Name";
         CustomerDetails newCustomerDetails = CustomerDetails.builder().x("new x value").build();
 
         customerService.update(customer.getId(), newName, newCustomerDetails);
 
-        assertThat(customerRepository.findAll()).hasSize(3);
+        assertThat(customerService.findAll()).hasSize(3);
         Customer updatedCustomer = customerRepository.getById(customer.getId());
         assertThat(updatedCustomer.getName()).isEqualTo(newName);
         assertThat(updatedCustomer.getCustomerDetails()).isEqualTo(newCustomerDetails);
