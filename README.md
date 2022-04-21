@@ -58,7 +58,15 @@ does NOT support.
 </changeSet>
 ```
 
-Pros:
+It is interesting to note that overriding the H2 data urls in `application-test.properties` does NOT have any effect:
+So something like this has does not create may `jsonb` column references to `json`.
+
+```properties
+spring.liquibase.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE TYPE IF NOT EXISTS "JSONB" AS json;
+spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE TYPE IF NOT EXISTS "JSONB" AS json;
+````
+
+I'm curious if there is an explanation to this.
 
 - Fast
 
