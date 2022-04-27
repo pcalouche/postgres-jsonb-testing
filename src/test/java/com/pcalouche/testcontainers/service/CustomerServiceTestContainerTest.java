@@ -17,9 +17,8 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
+@DataJpaTest(excludeAutoConfiguration = AutoConfigureTestDatabase.class)
 @Testcontainers
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
 public class CustomerServiceTestContainerTest {
     @SuppressWarnings("resource")
