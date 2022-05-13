@@ -21,12 +21,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Testcontainers
 @ActiveProfiles("test")
 public class CustomerServiceTestContainer2Test {
-    @SuppressWarnings("resource")
     @Container
-    static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:9.6.24")
-            .withDatabaseName("postgres")
-            .withPassword("password")
-            .withDatabaseName("test");
+    static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:9.6.24");
 
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry dynamicPropertyRegistry) {
