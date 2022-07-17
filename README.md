@@ -47,7 +47,7 @@ by making use of the `spring.liquibase.contexts` property and applying that acco
 
 ### H2 in Memory DB Solution
 
-A special change set is needed to tell H2 to use a `json` column which is supports instead of a `jsonb` column which is
+A special change set is needed to tell H2 to use a `json` column which it supports instead of a `jsonb` column which is
 does NOT support.
 
 ```xml 
@@ -59,14 +59,15 @@ does NOT support.
 ```
 
 It is interesting to note that overriding the H2 data urls in `application-test.properties` does NOT have any effect:
-So something like this has does not create may `jsonb` column references to `json`.
+So something like this has does not create any `jsonb` column references to `json`.
 
 ```properties
 spring.liquibase.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE TYPE IF NOT EXISTS "JSONB" AS json;
 spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE TYPE IF NOT EXISTS "JSONB" AS json;
 ````
 
-I'm curious if there is an explanation to this.
+I'm curious if there is an explanation to this. My guess is other validation is done by Spring Boot before the H2 INIT
+script is run.
 
 - Fast
 
